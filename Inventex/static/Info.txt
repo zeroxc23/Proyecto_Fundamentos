@@ -1,0 +1,4 @@
+Colores De Aplicacion
+Indigo: #4b0081
+Shade os Violet: #7f00b2
+Magenta Affair: #ab3ed8
