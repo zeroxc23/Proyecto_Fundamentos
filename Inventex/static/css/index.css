@@ -2,72 +2,65 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* Body */
+/* Body y HTML */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: #000;
+}
+
+/* Contenedor principal */
 .main {
-    width: 100%;
-    height: 109vh;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%), url('../img/Fondo6.jpg');
+    min-height: calc(100vh - 100px);
+    background-image: linear-gradient(to top, rgba(3, 3, 3, 0.5) 40%), url('../img/Fondo5.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navbar */
 .navbar {
-    width: 1200px;
+    max-width: 1200px;
     height: 75px;
-    margin: auto;
-    margin-right: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.icon {
-    width: 200px;
-    float: left;
-    height: 70px;
-}
-
-.logo {
+.icon .logo {
     color: #ab3ed8;
     font-size: 35px;
-    font-family: Arial;
-    padding-left: 20px;
-    float: left;
-    padding-top: 10px;
+    font-weight: bold;
 }
 
 /* Menu */
-.menu {
-    width: 400px;
-    float: left;
-    height: 70px;
-    margin-left: 8%;
-}
-
-ul {
-    float: left;
+.menu ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-ul li {
     list-style: none;
-    margin-left: 70px;
-    margin-top: 27px;
 }
 
-ul li a {
+.menu ul li {
+    margin-left: 20px;
+}
+
+.menu ul li a {
     text-decoration: none;
     color: #ab3ed8;
-    font-family: Arial;
     font-weight: bold;
-    transition: 0.4s ease-in-out;
+    transition: 0.3s;
 }
 
-ul li a:hover {
+.menu ul li a:hover {
     color: #7f00b2;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* Sección principal */
@@ -75,86 +68,102 @@ ul li a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 80px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
 }
 
-/* Contenido de texto */
+/* Contenido */
 .content {
     flex: 1;
     color: #ab3ed8;
-}
-
-.content .par {
-    width: 90%;
-    padding-left: 20px;
-    padding-bottom: 25px;
-    font-family: Arial;
-    letter-spacing: 1.2px;
-    line-height: 30px;
+    padding: 20px;
 }
 
 .content h1 {
-    font-family: 'Times New Roman';
     font-size: 50px;
-    padding-left: 20px;
-    margin-top: 9%;
     letter-spacing: 2px;
 }
 
-/* Botón */
-.content .cn1 {
-    width: 160px;
-    height: 40px;
-    background: #7f00b2;
-    border: #ab3ed8;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: .4s ease;
-}
-
-.content .cn1 a {
-    text-decoration: none;
-    color:white;
-    font-weight: bold;
-    transition: .3s ease;
-}
-
-.content .cn1:hover {
-    background: #ab3ed8;
-    font-size: 30px;
-}
-
-/* Logo */
+/* Imagen del logo */
 .img-container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    
+    padding: 20px;
 }
 
 .img-container img {
-    width: 600px;
+    max-width: 100%;
     height: auto;
-    margin-left: 20%;
     transition: transform 0.3s;
 }
 
-.img-container img:hover{
-    transform: scale(1.2);
+.img-container img:hover {
+    transform: scale(1.1);
 }
 
-/* Pie de página */
+/* Cards */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px auto;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+.card-item {
+    background: linear-gradient(145deg, #7f00b2, #ab3ed8);
+    border-radius: 15px;
+    padding: 30px 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(171, 62, 216, 0.5);
+}
+
+.card-item h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card-item p {
+    font-size: 15px;
+    color: #f3e6ff;
+    margin-bottom: 20px;
+}
+
+.card-item a {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #4b0081;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.card-item a:hover {
+    background-color: #ab3ed8;
+    color: #fff;
+    border: 2px solid #7f00b2;
+}
+
+/* Footer */
 .footer {
-    background-color:#7f00b2;
+    background-color: #7f00b2;
     padding: 20px;
     text-align: center;
-    color: #ab3ed8;
-    font-family: Arial, sans-serif;
+    color: #fff;
+    margin-top: auto;
 }
 
 .footer-social {
@@ -178,51 +187,26 @@ ul li a:hover {
 
 .footer-copy {
     font-size: 14px;
-    color: #aaa;
+    font-weight: bold;
 }
 
-/* Responsive */
+/* Media queries */
 @media (max-width: 1024px) {
-    .navbar {
-        width: 100%;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .menu {
-        width: 100%;
-        margin-left: 0;
-        display: flex;
-        justify-content: center;
-    }
-
-    ul {
-        flex-direction: row;
-    }
-
     .section {
         flex-direction: column;
-        padding: 20px;
         text-align: center;
     }
 
     .content h1 {
         font-size: 36px;
-        margin-top: 30px;
-    }
-
-    .content .par {
-        width: 100%;
-        padding: 0 10px 20px;
-    }
-
-    .img-container {
-        margin-top: 20px;
     }
 
     .img-container img {
         width: 80%;
-        margin: 0 auto;
+    }
+
+    .cards-container {
+        gap: 20px;
     }
 }
 
@@ -234,7 +218,7 @@ ul li a:hover {
 
     .menu ul {
         flex-direction: column;
-        padding: 10px 0;
+        align-items: center;
     }
 
     .menu ul li {
@@ -245,15 +229,8 @@ ul li a:hover {
         font-size: 28px;
     }
 
-    .content .cn1 {
-        width: 100%;
-        max-width: 200px;
-        font-size: 16px;
-    }
-
     .img-container img {
         width: 100%;
-        margin-left: 0;
     }
 
     .footer-social img {
@@ -263,5 +240,25 @@ ul li a:hover {
 
     .footer-copy {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-item {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .card-item h3 {
+        font-size: 20px;
+    }
+
+    .card-item p,
+    .card-item a {
+        font-size: 14px;
+    }
+
+    .card-item a {
+        padding: 8px 16px;
     }
 }

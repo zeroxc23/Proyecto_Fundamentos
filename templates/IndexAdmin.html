@@ -17,25 +17,41 @@
 
             <div class="menu">
                 <ul>
-                    <li><a href={% url 'Login' %}>Iniciar Sesión</a></li>
-                    <li><a href={% url 'Register' %}>Crear Cuenta</a></li>
+                    <li><a href="#" id="logout-link" onclick="document.getElementById('logout-form').submit();" >Cerrar Sesión</a>
+                        <form id="logout-form" action={% url 'Logout' %} method="post" style="display: none;">
+                        {% csrf_token %}</li>
                 </ul>
             </div>
         </div>
 
         <div class="section">
             <div class="content">
-                <h1>Bienvenido a <br> <span> Inventex </span> <br> donde la eficiencia es un hecho </h1>
-                
-                
+                <h1> {{message}} </h1>
             </div>
             <div class="img-container">
                 <img src="{% static 'img/Logo.png' %}" alt="Logo">
             </div>
+            
+        </div>
+        <div class="cards-container">
+            <div class="card-item">
+                <h3>Inventario</h3>
+                <p>Gestiona productos, existencias y más.</p>
+                <a href={% url 'IndexInvent' %}>Ir al Inventario</a>
+            </div>
+            <div class="card-item">
+                <h3>Usuarios</h3>
+                <p>Administra roles, accesos y cuentas de usuario.</p>
+                <a href="#">Ver Usuarios</a>
+            </div>
+            <div class="card-item">
+                <h3>Reportes</h3>
+                <p>Genera y visualiza reportes detallados.</p>
+                <a href="#">Ver Reportes</a>
+            </div>
         </div>
     </div>
-  
-</div>
+   
     <footer class="footer">
         <div class="footer-social">
             <a href="#">

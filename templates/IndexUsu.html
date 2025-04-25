@@ -17,25 +17,24 @@
 
             <div class="menu">
                 <ul>
-                    <li><a href={% url 'Login' %}>Iniciar Sesión</a></li>
-                    <li><a href={% url 'Register' %}>Crear Cuenta</a></li>
+                    <li><a href="#" id="logout-link" onclick="document.getElementById('logout-form').submit();" >Cerrar Sesión</a>
+                        <form id="logout-form" action={% url 'Logout' %} method="post" style="display: none;">
+                        {% csrf_token %}</li>
                 </ul>
             </div>
         </div>
 
         <div class="section">
             <div class="content">
-                <h1>Bienvenido a <br> <span> Inventex </span> <br> donde la eficiencia es un hecho </h1>
-                
-                
+                <h1> {{message}} <br> <span> Usuario </span> <br> Course </h1>
+                <p class="par">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste deserunt dicta quam, rerum quia nostrum labore, aut a tempora iure beatae eveniet dolorum placeat maiores voluptatum rem hic natus.</p>
+              
             </div>
             <div class="img-container">
                 <img src="{% static 'img/Logo.png' %}" alt="Logo">
             </div>
         </div>
     </div>
-  
-</div>
     <footer class="footer">
         <div class="footer-social">
             <a href="#">
@@ -47,6 +46,7 @@
             <a href="#">
                 <img src="{% static 'img/gorjeo.png' %}" alt="X">
             </a>
+            
         </div>
         <p class="footer-copy">&copy; 2025 Inventex. Todos los derechos reservados.</p>
     </footer>

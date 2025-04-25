@@ -21,6 +21,17 @@ from Inventex import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #Pagina Principal
     path('', views.index, name="Index"),
+    #Aplicación
     path('Inventario/',include('Aplicacion.Inventario.urls')),
+    # Credenciales
+    path('login/', views.login, name='Login'),
+    path('indexadmin/', views.indexAdmin, name='indexAdmin'),
+    path('indexusu/', views.indexUsu, name='indexUsu'),
+    path('logout/', views.logout_view, name='Logout'),
+    path('register/', views.register, name='Register'),
+    #Accesos
+    path('acceso-denegado/', views.acceso_denegado, name='acceso_denegado'),
+
 ]
