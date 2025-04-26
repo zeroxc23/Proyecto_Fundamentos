@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Categoria, Proveedor, Producto
 from django.contrib import messages
 
+
+
+
+#/////////////////////////////////////////////////////////////////////////////////////
+# Sección Inventario
+
 # Página de Inventario
 def homeinvent(request):
     productos_listados = Producto.objects.all()
@@ -39,7 +45,7 @@ def registrarProducto(request):
         messages.success(request, '¡Producto registrado!')
     return redirect('IndexInvent')
 
-# Mostrar formulario de edición
+# Formulario de edición
 def edicionProducto(request, id):
     producto = get_object_or_404(Producto, id=id)
     producto.precio = str(producto.precio)
@@ -51,7 +57,7 @@ def edicionProducto(request, id):
         "proveedores": proveedores
     })
 
-# Guardar edición de producto
+# Guardar edición
 def editarProducto(request):
     if request.method == 'POST':
         id = request.POST['txtId']
@@ -80,3 +86,62 @@ def eliminarProducto(request, id):
     producto.delete()
     messages.success(request, '¡Producto eliminado!')
     return redirect('IndexInvent')
+
+
+#/////////////////////////////////////////////////////////////////////////////////////
+
+#Sección Categoria
+def homecategoria(request):
+    categorias=Categoria.objects.all()
+    messages.success(request,'¡Categoria listada!')
+    return render(request,"gestionCategoria.html",{
+        "categorias":categorias,
+    })
+
+# Registrar Categoria
+def registrarCategoria(request):
+    if request.method == 'POST':
+        nombre = request.POST['txtNombre']
+        descripcion = request.POST['txtDescripcion']
+
+        Categoria.objects.create(
+            nombre=nombre,
+            descripcion=descripcion
+        )
+
+        messages.success(request, '¡Categoría registrada!')
+
+    
+    return redirect('IndexCat')
+
+
+# Formulario de edición
+def edicionCategoria(request,id):
+    categorias = get_object_or_404(Categoria, id=id)
+    return render(request,"editarCategoria.html",{
+        "categorias":categorias,
+    })
+
+#Guardar edición
+def editarCategoria(request):
+    if request.method == 'POST':
+        id = request.POST['txtId']
+        nombre = request.POST['txtNombre']
+        descripcion = request.POST['txtDescripcion']
+
+        categoria = get_object_or_404(Categoria, id=id)
+        categoria.nombre = nombre
+        categoria.descripcion = descripcion
+        categoria.save()
+
+        messages.success(request, '¡Categoría actualizada!')
+    return redirect('IndexCat')
+
+#Elminar Categoria
+def eliminarCategoria(request, id):
+    categoria = get_object_or_404(Categoria, id=id)
+    categoria.delete()
+    messages.success(request, '¡Categoría eliminada!')
+    return redirect('IndexCat')
+#/////////////////////////////////////////////////////////////////////////////////////
+#Sección Proveedor
