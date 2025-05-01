@@ -6,7 +6,7 @@ from django.contrib import messages
 from .decorators import logout_required
 from django.contrib.auth.models import User
 
-# Pagina Principal
+# Página Principal
 def index(request):
     return render(request, 'index.html')
 
@@ -20,7 +20,7 @@ def indexUsu(request):
     username = request.user.username
     message = f"Bienvenido a Inventex, {username}"
     return render(request, "IndexUsu.html", {'message': message})
-         
+
 # Login
 def login(request):
     if request.method == 'POST':
@@ -38,24 +38,26 @@ def login(request):
             return render(request, 'Login.html', {'error_message': 'Nombre de usuario o contraseña incorrectos.'})
     else:
         return render(request, 'Login.html')
+
 # Acceso Errores
 def acceso_denegado(request):
     return render(request, 'AccesoDenegado.html')
 
-# Redireccón Administrador
+# Redirección Administrador
 @login_required
 def indexAdmin(request):
-   if not request.user.is_staff:
+    if not request.user.is_staff:
         return redirect('acceso_denegado')  
-   username = request.user.username
-   message = f"Bienvenido Administrador, {username}"
-   return render(request, "IndexAdmin.html", {'message': message})
+    username = request.user.username
+    message = f"Bienvenido Administrador, {username}"
+    return render(request, "IndexAdmin.html", {'message': message})
 
-#Logout
+# Logout
 @logout_required
 def logout_view(request):
     logout(request)
     return redirect('Index')
+
 # Registrarse
 def register(request):
     if request.method == 'POST':
@@ -65,19 +67,20 @@ def register(request):
         telefono = request.POST.get('telefono')
         usuario = request.POST.get('usuario')
         contraseña = request.POST.get('contraseña')
+        
         if User.objects.filter(username=usuario).exists():
             return render(request, 'Register.html', {'error_message': 'El nombre de usuario ya está en uso.'})
+        
         user = User.objects.create_user(username=usuario, email=correo, password=contraseña)
         user.first_name = nombre
         user.last_name = apellido
-
         user.save()
 
         user = authenticate(username=usuario, password=contraseña)
         if user is not None:
             auth_login(request, user)
-            return redirect('Index.html')
+            return redirect('Index')
         else:
-            
-            pass
+            return render(request, 'Register.html', {'error_message': 'Hubo un problema al autenticar el usuario.'})
+
     return render(request, 'Register.html')
