@@ -1,0 +1,50 @@
+{% extends "./base.html" %}
+
+{% block title %} Editar Producto {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Editar Producto</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="{% url 'editarusuProducto' %}" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtId" name="txtId" value="{{ producto.id }}" class="form-control" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{ producto.nombre }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="txtDescripcion" name="txtDescripcion" class="form-control" required>{{ producto.descripcion }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <select id="txtCategoria" name="txtCategoria" class="form-control" required>
+                            {% for cat in categorias %}
+                                <option value="{{ cat.id }}" {% if cat.id == producto.categoria.id %}selected{% endif %}>{{ cat.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="txtProveedor" name="txtProveedor" class="form-control" required>
+                            {% for prov in proveedores %}
+                                <option value="{{ prov.id }}" {% if prov.id == producto.proveedor.id %}selected{% endif %}>{{ prov.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="txtPrecio" name="txtPrecio" value="{{ producto.precio|default_if_none:'0.00' }}" class="form-control" placeholder="Precio" step="0.01" min="0" required>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="txtCantidad" name="txtCantidad" value="{{ producto.cantidad }}" class="form-control" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

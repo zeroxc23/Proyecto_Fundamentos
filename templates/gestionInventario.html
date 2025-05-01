@@ -51,13 +51,13 @@
                             placeholder="Cantidad" min="0" required>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block text-white" style="font-weight:bold;">Guardar</button>
+                        <button type="submit" class="btn btn-success btn-block text-white" style="font-weight:bold; ">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+    
     <!-- Tabla de productos -->
     <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
         <h1>Listado de Productos</h1>
@@ -98,4 +98,11 @@
         </div>
     </div>
 </div>
+<br>
+<div class="col-sm-12">
+    <div class="form-group">
+        <a href="{% url 'indexAdmin' %}" class="btn btn-block text-white" style="font-weight:bold; background-color:#ab3ed8;">Volver al inicio</a>
+    </div>
+</div>
+
 {% endblock %}

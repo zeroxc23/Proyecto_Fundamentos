@@ -1,0 +1,39 @@
+{% extends "./base.html" %}
+
+{% block title %} Editar Proveedor {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2>Editar Proveedor</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="{% url 'editarproveedorusu' %}" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtId" name="txtId" value="{{ proveedor.id }}" class="form-control" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre</label>
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{ proveedor.nombre }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDireccion">Dirección</label>
+                        <input type="text" id="txtDireccion" name="txtDireccion" value="{{ proveedor.direccion }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">Correo</label>
+                        <input type="email" id="txtCorreo" name="txtCorreo" value="{{ proveedor.correo }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTelefono">Teléfono</label>
+                        <input type="text" id="txtTelefono" name="txtTelefono" value="{{ proveedor.telefono }}" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

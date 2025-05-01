@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Categorías {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <h1>Listado de Categorías</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in categorias %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.descripcion }}</td>
+                        <td><a href="edicionCategoria/{{ c.id }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCategoria/{{ c.id }}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center">No hay categorías registradas.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group">
+        <a href="{% url 'indexUsu' %}" class="btn btn-block text-white" style="font-weight:bold; background-color:#ab3ed8;">Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

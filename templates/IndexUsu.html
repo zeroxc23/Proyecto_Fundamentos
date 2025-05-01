@@ -26,14 +26,32 @@
 
         <div class="section">
             <div class="content">
-                <h1> {{message}} <br> <span> Usuario </span> <br> Course </h1>
-                <p class="par">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum iste deserunt dicta quam, rerum quia nostrum labore, aut a tempora iure beatae eveniet dolorum placeat maiores voluptatum rem hic natus.</p>
+                <h1> {{message}} </h1>
+                
               
             </div>
             <div class="img-container">
                 <img src="{% static 'img/Logo.png' %}" alt="Logo">
             </div>
         </div>
+        <div class="cards-container">
+            <div class="card-item">
+                <h3>Inventario</h3>
+                <p>Visualiza productos, existencias y más.</p>
+                <a href={% url 'IndexUsuProducto' %}>Ir al Inventario</a>
+            </div>
+            <div class="card-item">
+                <h3>Categorias</h3>
+                <p>Gestiona las categorias de los productos</p>
+                <a href={% url 'IndexUsuCategoria' %}>Ver Categorias</a>
+            </div>
+            <div class="card-item">
+                <h3>Proveedores</h3>
+                <p>Visualiza y gestiona los proveedores.</p>
+                <a href={% url 'IndexUsuProveedor' %}>Ver Proveedores</a>
+            </div>
+        </div>
+    </div>
     </div>
     <footer class="footer">
         <div class="footer-social">

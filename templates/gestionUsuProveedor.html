@@ -1,0 +1,52 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Proveedores {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <h1>Listado de Proveedores</h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pro in proveedores %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ pro.nombre }}</td>
+                        <td>{{ pro.direccion }}</td>
+                        <td>{{ pro.correo }}</td>
+                        <td>{{ pro.telefono }}</td>
+                        <td><a href="edicionProveedor/{{ pro.id }}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarProveedor/{{ pro.id }}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center">No hay proveedores registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+    <div class="form-group">
+        <a href="{% url 'indexUsu' %}" class="btn btn-block text-white" style="font-weight:bold; background-color:#ab3ed8;">Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}
