@@ -6,6 +6,9 @@ from django.contrib import messages
 from .decorators import logout_required
 from django.contrib.auth.models import User
 
+# Presentación
+def home(request):
+    return render(request, 'Inicio.html') 
 # Página Principal
 def index(request):
     return render(request, 'index.html')

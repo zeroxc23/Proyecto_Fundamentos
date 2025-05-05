@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Inventario</title>
+    <link rel="stylesheet" href="{% static 'css/Inicio.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Inventariado - Iventex</h1>
+    </header>
+    <div class="img-container">
+        <img src="{% static 'img/Logo.png' %}" alt="Logo">
+    </div>
+
+    <section class="block" id="bloque1">
+        <div class="card">
+            <h2>Planteamiento del Problema</h2>
+            <p class="info">
+                Muchas pequeñas y medianas empresas usan métodos manuales para el inventario, generando errores, desorganización y retrasos. Las soluciones existentes suelen ser costosas o complejas. Se requiere una herramienta web sencilla y accesible.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Justificación</h2>
+            <p class="info">
+                Inventex responde a la necesidad de una solución económica y fácil de usar. Mejora la eficiencia, reduce errores y facilita la gestión del inventario en pequeñas y medianas empresas.
+            </p>
+        </div>
+    </section>
+
+    <section class="block" id="bloque2">
+        <div class="card">
+            <h2>Objetivo General</h2>
+            <p class="info">
+                Desarrollar una aplicación web que permita gestionar de manera eficiente y segura el inventario de productos en pequeñas y medianas empresas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Objetivos Específicos</h2>
+            <p class="info">
+                - Implementar funcionalidades para la actualización y eliminación de productos.<br>
+                - Diseñar una interfaz web intuitiva y accesible para los usuarios.<br>
+                - Garantizar la seguridad de cada usuario implementando un sistema de autenticación y autorización diferenciando los accesos por el tipo de usuario.<br>
+            </p>
+        </div>
+    </section>
+
+    <section class="block" id="bloque3">
+        <div class="card">
+            <h2>Metodología</h2>
+            <p class="info">
+                Se emplea el modelo en cascada (Waterfall), con fases secuenciales: recolección de requisitos, diseño, Implementación (desarrollo), pruebas, implementación y mantenimiento.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Cronograma de Actividades</h2>
+            <p class="info">
+                1. Requisitos: 2 Días <br>
+                2. Diseño: 5 Días <br>
+                3. Desarrollo: 5 Días <br>
+                4. Pruebas: 4 Días <br>
+                5. Implementación y entrega: 4 Días <br>
+                6. Mantenimiento : 2 Días
+            </p>
+        </div>
+    </section>
+
+    
+    <div class="boton-contenedor">
+        <a href="{% url 'Index' %}" class="boton-enlace">Ingresar al Proyecto</a>
+    </div>
+
+    <script src="{% static 'js/Inicio.js' %}"></script>
+</body>
+</html>

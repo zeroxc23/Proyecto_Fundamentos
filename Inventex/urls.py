@@ -21,8 +21,10 @@ from Inventex import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #Presentación
+    path('', views.home, name='Inicio'),
     #Pagina Principal
-    path('', views.index, name="Index"),
+    path('Index/', views.index, name="Index"),
     #Aplicación
     path('Inventario/',include('Aplicacion.Inventario.urls')),
     # Credenciales
